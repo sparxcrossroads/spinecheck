@@ -1,6 +1,3 @@
--- 战斗测试
-require "logic.battle.BattleConstants"
-
 
 local tempFrameActRes = "resource/tempSkill_pic/"
 local spinePath = "resource/spineBones/"
@@ -32,12 +29,7 @@ function spineTest:ctor()
 	 self.spine = self:createSpine()
 	 self:createAnimatonsBt(self.spine)	
 	 self:createEffectTest(self.spine)
-	-- self:createBT("fjdjf",{x=500,y=200},function ()	
-	-- self:mapTest()
-	-- self:particleTest()
-	-- self:skillTest()
-	-- self:fontTest()
-	-- self:shaderTest()
+
 end
 
 local function addSpriteFrame(fileName)		
@@ -105,17 +97,6 @@ function spineTest:createSpine()
 	spine.eventListener = function (trackIndex, event)
 		printf("触发lua中eventListener回调:trackIndex=%d,event.name=%s,trackName=%s\n",trackIndex, event.name,self.animations[trackIndex])
 		print_r(event)
-		-- if self.animations[trackIndex] == "attack3" then
-		-- 	local fileName = "end_AR_attack3" 
-		-- 	display.addSpriteFramesWithFile(tempFrameActRes .. fileName .. ".plist", tempFrameActRes .. fileName .. ".png")
-		-- 	local leftGridFrames = display.newFrames("end_AR_attack3_%02d.png", 1, 5)
-		-- 	self.leftGridAnimation = display.newAnimation(leftGridFrames, 1/15)
-			
-		-- 	local placeHolder = display.newSprite(leftGridFrames[1])
-		-- 	placeHolder:addTo(spine)
-		-- 	placeHolder:align(display.CENTER, 0, 0)
-		-- 	placeHolder:playAnimationOnce(self.leftGridAnimation,true)
-		-- end		
 
 	end
 
@@ -176,14 +157,6 @@ function spineTest:createBT(text,pos,callBack)
 end
 
 function spineTest:createEffectTest(spine)	
-	-- -- 遍历切换
-	-- self:createBT("遍历", {x=220,y=100}, function ()
-	-- 		spine:clearTracks()
-	-- 		local index = math.random(1,#self.animations)
-	-- 		spine:setAnimation(index,self.animations[index],false)
-	-- 		self.loop = true
-	-- 	end)
-
 	-- 暂停
 	self:createBT("暂停", {x=330,y=100}, function ()
 			spine:pauseSchedulerAndActions()

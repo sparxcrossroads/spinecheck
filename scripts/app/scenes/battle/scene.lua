@@ -1,5 +1,3 @@
-require "logic.battle.BattleConstants"
-
 
 
 local spinecheck = import(".spinecheck")
@@ -21,30 +19,6 @@ function scene:onEnter()
 		print("--feng-- onEnter()")
 		return
 	end
-
-	-- -- 注册帧事件
-	-- self:addNodeEventListener(cc.NODE_ENTER_FRAME_EVENT, function(dt)
-	-- 	if self.logicRunning then
-	-- 		self.battleLogic:update()
-	-- 		-- 取消以下代码注释可加速
-	-- 		-- self.battleLogic:update()			
-	-- 		-- self.battleLogic:update()
-	-- 		-- self.battleLogic:update()
-	-- 		-- self.battleLogic:update()
-	-- 		-- self.battleLogic:update()
-	-- 	end
-	-- end)
-	-- self:scheduleUpdate()
-
-
-	--音乐
-	local musicRandom = math.random(0,1)
-	uiData.battleMusic = SOUND_PATH.battle1
-	if musicRandom > 0.5 then
-		uiData.battleMusic = SOUND_PATH.battle2
-	end
-	playUiMusic(uiData.battleMusic, true)
-
 end
 
 function scene:onExit()
