@@ -1,7 +1,6 @@
 -- 战斗测试
 require "logic.battle.BattleConstants"
-local BulletSprite = import(".BulletSprite")
-local ShaderProgram = import(".ShaderProgram")
+
 
 local tempFrameActRes = "resource/tempSkill_pic/"
 local spinePath = "resource/spineBones/"
@@ -9,7 +8,7 @@ local spinePath = "resource/spineBones/"
 
 local TransitionMoveSpeed = 180
 
-local BattleBottomBar = require("app.scenes.battle.BattleBottomBar")
+-- local BattleBottomBar = require("app.scenes.battle.BattleBottomBar")
 
 local spineTest = class("spineTest", function() 
 	return display.newLayer() 
