@@ -5,7 +5,8 @@ local ShaderProgram = import(".ShaderProgram")
 
 local tempFrameActRes = "resource/tempSkill_pic/"
 local spinePath = "resource/spineBones/"
-local resDir = spinePath.."1004"
+-- local resDir = spinePath.."1004"
+
 local TransitionMoveSpeed = 180
 
 local BattleBottomBar = require("app.scenes.battle.BattleBottomBar")
@@ -13,6 +14,32 @@ local BattleBottomBar = require("app.scenes.battle.BattleBottomBar")
 local spineTest = class("spineTest", function() 
 	return display.newLayer() 
 end)
+
+
+
+function spineTest:ctor()
+	local bg = display.newSprite("resource/battle/bg/8007.jpg")
+
+
+	local configs = dofile(device.writablePath.."spineConfig.lua")
+	print_r(configs)
+	for k,v in pairs(configs) do		
+		-- spine = self:createSpine(v)
+		config = v
+	end
+	resDir=spinePath..config.name
+
+	bg:addTo(self,-1):align(display.CENTER, display.cx, display.cy)
+	 self.spine = self:createSpine()
+	 self:createAnimatonsBt(self.spine)	
+	 self:createEffectTest(self.spine)
+	-- self:createBT("fjdjf",{x=500,y=200},function ()	
+	-- self:mapTest()
+	-- self:particleTest()
+	-- self:skillTest()
+	-- self:fontTest()
+	-- self:shaderTest()
+end
 
 local function addSpriteFrame(fileName)		
 	local fileName = fileName 
@@ -36,23 +63,6 @@ local function readResFile()
 end
 
 
-function spineTest:ctor()
-	local bg = display.newSprite("resource/bg/8007.png")
-	bg:addTo(self,-1):align(display.CENTER, display.cx, display.cy)
-
-	 self.spine = self:createSpine()
-	 self:createAnimatonsBt(self.spine)	
-	 self:createEffectTest(self.spine)
-	-- self:createBT("fjdjf",{x=500,y=200},function ()	
-	-- self:mapTest()
-	-- self:particleTest()
-	-- self:skillTest()
-	-- self:fontTest()
-	-- self:shaderTest()
-end
-
-
-
 function spineTest:createSpine()
 	self.displayNode = display.newNode()
 	local spine = SkeletonAnimation:createWithFile(resDir..".json",resDir..".atlas",0.5)
@@ -68,7 +78,7 @@ function spineTest:createSpine()
 
 	
 	-- self.displayNode:addTo(self):pos(pos.x, pos.y)
-	self.displayNode:addTo(self):pos(200, 350)
+	self.displayNode:addTo(self):pos(config.pos.x, config.pos.y)
 
 
 	spine.startListener = function (trackIndex)

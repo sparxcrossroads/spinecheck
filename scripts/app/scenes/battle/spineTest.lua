@@ -48,7 +48,7 @@ function spineTest:createBT(text,pos,callBack)
 end
 
 function spineTest:ctor(params)
-	local bg = display.newSprite("resource/bg/8007.png")
+	local bg = display.newSprite("resource/battle/bg/8007.jpg")
 	bg:addTo(self,-1):align(display.CENTER, display.cx, display.cy)
 
 	self.spine = self:createSpine()
